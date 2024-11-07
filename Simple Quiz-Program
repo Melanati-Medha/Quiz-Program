@@ -1,0 +1,92 @@
+Here's a simple Quiz Program project using Java:
+
+QuizProgram.java
+
+
+import java.util.Scanner;
+
+class Question {
+    String question;
+    String[] options;
+    int correctOption;
+
+    public Question(String question, String[] options, int correctOption) {
+        this.question = question;
+        this.options = options;
+        this.correctOption = correctOption;
+    }
+}
+
+public class QuizProgram {
+    private static Question[] questions = {
+        new Question("What is the capital of France?", new String[] {"Berlin", "Paris", "London", "Rome"}, 1),
+        new Question("Who is the founder of Microsoft?", new String[] {"Bill Gates", "Steve Jobs", "Mark Zuckerberg", "Larry Page"}, 0),
+        new Question("What is the largest planet in our solar system?", new String[] {"Earth", "Saturn", "Jupiter", "Mars"}, 2)
+    };
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int score = 0;
+
+        for (Question question : questions) {
+            System.out.println(question.question);
+            for (int i = 0; i < question.options.length; i++) {
+                System.out.println((i + 1) + ". " + question.options[i]);
+            }
+
+            System.out.print("Enter your answer (1-" + question.options.length + "): ");
+            int answer = scanner.nextInt();
+
+            if (answer == question.correctOption + 1) {
+                System.out.println("Correct!");
+                score++;
+            } else {
+                System.out.println("Incorrect. The correct answer is " + (question.correctOption + 1) + ". " + question.options[question.correctOption]);
+            }
+        }
+
+        System.out.println("Quiz completed! Your final score is " + score + "/" + questions.length);
+    }
+}
+
+
+Features:
+
+1. Multiple choice questions
+2. Automatic scoring
+3. Feedback for correct/incorrect answers
+
+How to run:
+
+1. Save the code in a file named QuizProgram.java.
+2. Compile the code using javac QuizProgram.java.
+3. Run the program using java QuizProgram.
+
+Example usage:
+
+
+What is the capital of France?
+1. Berlin
+2. Paris
+3. London
+4. Rome
+Enter your answer (1-4): 2
+Correct!
+
+Who is the founder of Microsoft?
+1. Bill Gates
+2. Steve Jobs
+3. Mark Zuckerberg
+4. Larry Page
+Enter your answer (1-4): 1
+Correct!
+
+What is the largest planet in our solar system?
+1. Earth
+2. Saturn
+3. Jupiter
+4. Mars
+Enter your answer (1-4): 3
+Correct!
+
+Quiz completed! Your final score is 3/3
